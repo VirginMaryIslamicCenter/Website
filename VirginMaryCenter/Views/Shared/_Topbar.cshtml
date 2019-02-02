@@ -1,0 +1,28 @@
+﻿<header class="topbar">
+    <div class="container">
+        <div class="row">
+			<div class="col">
+				<a href="/" class="logo"></a>
+				<div class="logoh1">VIRGIN MARY ISLAMIC CENTER</div>
+				<div class="logoh2">A CONVERT COMMUNITY CENTER IN UNION CITY</div>
+			</div>
+            <div class="col-ml-auto social">
+                <p>@Loc["follow us on"]</p>
+                @if (!String.IsNullOrWhiteSpace(config.About.Twitter))
+                {
+                <a href="https://www.twitter.com/@config.About.Twitter" target="_blank" class="fa-stack">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </a>
+                }
+                @if (!String.IsNullOrWhiteSpace(config.About.Facebook))
+                {
+                <a href="https://www.facebook.com/@config.About.Facebook" target="_blank" class="fa-stack">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </a>
+                }
+            </div>
+        </div>
+    </div>
+</header>

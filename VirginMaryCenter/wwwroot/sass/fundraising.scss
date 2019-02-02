@@ -1,0 +1,20 @@
+﻿@import "variables";
+
+#fundraising {
+    color: $textGray;
+
+    .progress {
+        height: 38px;
+        margin: 0 0 10px 0;
+        border-radius: 30px;
+        background: #c3c3c3;
+
+        .progress-bar {
+            width: 20px;
+        }
+    }
+
+    .goal {
+        font-size: 14px;
+    }
+}

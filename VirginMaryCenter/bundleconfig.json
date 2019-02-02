@@ -1,0 +1,54 @@
+﻿[
+  {
+    "outputFileName": "homepage.min.css",
+    "inputFiles": [
+      "wwwroot/sass/bootstrap.scss",
+      "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css",
+      "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css",
+      "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css",
+      "node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css",
+      "node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css",
+      "wwwroot/sass/common.scss",
+      "wwwroot/sass/topbar.scss",
+      "wwwroot/sass/fundraising.scss",
+      "wwwroot/sass/events.scss",
+      "wwwroot/sass/prayer-times.scss",
+      "wwwroot/sass/subscribe.scss",
+      "wwwroot/sass/location.scss",
+      "wwwroot/sass/calendar.scss"
+    ]
+  },
+  {
+    "outputFileName": "font-awesome.fonts",
+    "inputFiles": [
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-brands-400.eot",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-brands-400.svg",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-brands-400.ttf",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-brands-400.woff",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-brands-400.woff2",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-regular-400.eot",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-regular-400.svg",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-regular-400.ttf",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-regular-400.woff",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-regular-400.woff2",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.eot",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.svg",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.ttf",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.woff",
+      "bower_components/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.woff2"
+    ]
+  },
+  {
+    "outputFileName": "homepage.min.js",
+    "inputFiles": [
+      "node_modules/jquery/dist/jquery.js",
+      "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+      "node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js",
+      "node_modules/bootstrap-datepicker/dist/js/locales/bootstrap-datepicker.es.js",
+      "node_modules/bootstrap-datepicker/dist/js/locales/bootstrap-datepicker.pt-BR.js",
+      "node_modules/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js",
+      "node_modules/geocomplete/jquery.geocomplete.js",
+      "wwwroot/source-js/calendar.js"
+    ]
+  }
+]

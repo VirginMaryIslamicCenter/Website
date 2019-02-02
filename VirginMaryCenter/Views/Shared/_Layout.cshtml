@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virgin Mary Islamic Center - @ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/css/homepage.min.css" />
+</head>
+<body>
+    @Html.Partial("_Topbar")
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

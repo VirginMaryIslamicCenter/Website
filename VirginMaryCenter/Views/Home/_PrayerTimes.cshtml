@@ -1,0 +1,54 @@
+﻿@model IndexModel
+<div class="white-box orange" id="prayerTimes">
+    <h2>@Loc["PRAYER TIMES"]</h2>
+
+    <a class="btn btn-secondary d-block" href="#userLocation" data-toggle="modal">
+        <i class="fas fa-map-marker-alt"></i>
+        @Model.Location.Address
+
+        <span>@Loc["change"]</span>
+    </a>
+
+    <p class="today">@config.Location.Now.ToString("dddd, MMMM d, yyyy").ToUpper()</p>
+    <table class="table">
+		<tbody>
+			@*<tr>
+			<td>Imsaak</td>
+			<td class="text-right">4:44 AM</td>
+		</tr>*@
+			<tr>
+				<td>Fajr</td>
+				<td class="text-right">coming - soon</td>
+			</tr>
+			<tr>
+				<td>Noon / Dhuhr</td>
+				<td class="text-right">coming soon</td>
+			</tr>
+			<tr>
+				<td>Asr</td>
+				<td class="text-right">coming soon</td>
+			</tr>
+			<tr>
+				<td>Maghrib</td>
+				<td class="text-right">coming soon</td>
+			</tr>
+			<tr>
+				<td>Isha</td>
+				<td class="text-right">coming - soon</td>
+			</tr>
+			<tr>
+				<td>Salat ul-Layl</td>
+				<td class="text-right">coming soon</td>
+			</tr>
+		</tbody>
+    </table>
+
+    <div class="row actions">
+        <div class="col">
+            <a href="#"><i class="far fa-calendar-alt"></i> @Loc["view whole month"]</a>
+        </div>
+        <div class="col-ml-auto">
+            <a href="#"><i class="fas fa-cog"></i> @Loc["settings"]</a>
+        </div>
+    </div>
+</div>

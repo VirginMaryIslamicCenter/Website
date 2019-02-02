@@ -1,0 +1,17 @@
+﻿<div class="white-box orange" id="location">
+    <h2>@Loc["LOCATION"]</h2>
+
+    <div class="row">
+        <div class="col-auto">
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="col">
+            <p class="title">@config.Location.Venue</p>
+            <p>@config.Location.Address</p>
+            <p>@config.Location.City, @config.Location.State</p>
+            <p><a href="#">Get driving directions</a></p>
+        </div>
+    </div>
+
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=@config.Location.Latitude,@config.Location.Longitude&zoom=13&size=350x220&markers=color:red%7C@(config.Location.Latitude),@config.Location.Longitude&key=@config.GoogleMapsAPIKey" alt="Location" />
+</div>

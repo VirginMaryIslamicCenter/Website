@@ -1,0 +1,18 @@
+﻿@model SubscribeModel
+<div class="white-box orange" id="subscribe">
+    <div class="sidebar-max-width">
+        <h2>@Loc["SUBSCRIBE TO EMAIL LIST"]</h2>
+
+        <form class="form" asp-action="Subscribe" asp-controller="Home" data-ajax="true" data-ajax-method="POST" data-ajax-update="#subscribe" data-ajax-mode="replace-with">
+            <div class="form-group row">
+                <div class="col">
+                    <input type="email" asp-for="Email" class="form-control" placeholder="your email" />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-light mb-2">@Loc["SUBSCRIBE"]</button>
+                </div>
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </form>
+    </div>
+</div>

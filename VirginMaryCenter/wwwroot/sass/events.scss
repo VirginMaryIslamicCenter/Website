@@ -1,0 +1,187 @@
+﻿@import "variables";
+
+.event-box {
+    .event-picture {
+        height: 335px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 30px;
+        background-color: transparent;
+        position: relative;
+
+        .delete {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 20px;
+            display: none;
+        }
+
+        .date-box {
+            color: white;
+            display: inline-block;
+            height: 65px;
+            border-bottom: solid 5px white;
+            position: relative;
+
+            &::after {
+                content: "";
+                right: -64px;
+                top: 1px;
+                border: solid 32px transparent;
+                border-left-color: white;
+                position: absolute;
+                width: 0;
+                height: 0;
+                z-index: 1;
+            }
+
+            > .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .date {
+                background: $gray;
+
+                > .row {
+                    padding: 10px;
+
+                    > div {
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                }
+
+                .day {
+                    margin: 0 0 5px 0;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 16px;
+                }
+
+                .month {
+                    margin: 0;
+                    font-size: 14px;
+                }
+
+                .day-number {
+                    font-size: 42px;
+                    font-weight: bold;
+                    line-height: 38px;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
+            .time {
+                color: white;
+                line-height: 60px;
+                font-size: 20px;
+
+                .far {
+                    margin-right: 15px;
+                }
+
+                &::after {
+                    content: "";
+                    right: -60px;
+                    top: 0;
+                    border: solid 30px transparent;
+                    height: 0;
+                    width: 0;
+                    background: transparent;
+                    position: absolute;
+                    z-index: 2;
+                }
+
+                &.day {
+                    background: $orange;
+                    
+                    &::after {
+                        border-left-color: $orange;
+                    }
+                }
+
+                &.night {
+                    background: $darkBlue;
+
+                    &::after {
+                        border-left-color: $darkBlue;
+                    }
+                }
+            }
+        }
+
+
+        .content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, .8);
+            max-width: 70%;
+
+            h2 {
+                background: $gray;
+                color: white;
+                margin: 0;
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            p {
+                padding: 10px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .event-info {
+        margin-top: 15px;
+        color: $textGray;
+        margin-right: 0;
+
+        .location {
+            > .col, .col-auto {
+                padding-right: 0;
+            }
+
+            .fas {
+                font-size: 24px;
+            }
+
+            p {
+                margin: 0 0 4px 0;
+                font-size: 15px;
+                font-weight: 500;
+            }
+
+            a {
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+
+        .actions {
+            margin-right: 0;
+
+            .btn {
+                display: block;
+                margin: 0 0 8px 0;
+            }
+
+            .far {
+                margin-right: 5px;
+            }
+        }
+    }
+
+
+    &:hover {
+        .event-picture {
+            .delete {
+                display: block;
+            }
+        }
+    }
+}

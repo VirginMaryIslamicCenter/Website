@@ -1,0 +1,27 @@
+﻿@import "variables";
+
+// customizations
+$body-bg: $bg;
+
+// colors
+$theme-colors: (
+    "primary": $lightBlue,
+    "secondary": $lightGray,
+    "info": $teal,
+    "light": $veryLightGray,
+    "warning": $orange
+);
+
+// bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// fix
+.btn-primary {
+    color: white;
+}
+.btn-secondary {
+    color: white !important;
+}
+.btn-light {
+    color: $blue !important;
+}

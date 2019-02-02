@@ -1,0 +1,35 @@
+﻿@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+@section Scripts {
+    <script type="text/javascript" async src="https://maps.googleapis.com/maps/api/js?key=@config.GoogleMapsAPIKey&libraries=places"></script>
+    <script async src="~/js/homepage.min.js"></script>
+}
+
+
+<div class="row">
+    <div class="col-md">
+        @await Html.PartialAsync("_Fundraising")
+
+
+        <div class="white-box info event-box">
+            <h2>@Loc["UPCOMING EVENTS"]</h2>
+
+            @foreach (Event evt in Model.FutureEvents)
+            {
+                @await Html.PartialAsync("_Event", evt)
+            }
+        </div>
+
+    </div>
+    <div class="col-md-auto">
+        @await Html.PartialAsync("_UserLocation", Model.Location)
+        @await Html.PartialAsync("_PrayerTimes")
+        @await Html.PartialAsync("_Subscribe", new SubscribeModel())
+        @await Html.PartialAsync("_Location")
+        @await Html.PartialAsync("_Calendar")
+        @await Html.PartialAsync("_About")
+    </div>
+</div>

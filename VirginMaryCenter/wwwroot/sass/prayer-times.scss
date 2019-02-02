@@ -1,0 +1,43 @@
+﻿@import "variables";
+
+#prayerTimes {
+    .btn {
+        text-align: left;
+
+        .fas {
+            margin-right: 5px;
+        }
+
+        span {
+            float: right;
+            font-size: 14px;
+            margin: 1px 0 0 0;
+        }
+    }
+
+    .today {
+        font-weight: bold;
+        text-align: center;
+        margin: 25px 0 10px 0;
+        font-size: 16px;
+    }
+
+    .table {
+        font-size: 14px;
+
+        .text-right {
+            color: black;
+        }
+    }
+
+    .actions {
+        margin-right: 0;
+        
+        a {
+            i {
+                color: $textGray;
+                margin-right: 5px;
+            }
+        }
+    }
+}

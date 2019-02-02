@@ -1,0 +1,90 @@
+﻿@import "variables";
+
+
+@font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('/webfonts/BebasNeueRegular.otf');
+    src: url('/webfonts/BebasNeueRegular.eot');
+    src: url('/webfonts/BebasNeueRegular?#iefix') format('embedded-opentype'), url('/webfonts/BebasNeueRegular.woff') format('woff'), url('/webfonts/BebasNeueRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    text-transform: initial;
+}
+
+@font-face {
+    font-family: 'BebasNeueBold';
+    src: url('/webfonts/BebasNeueBold.otf');
+    src: url('/webfonts/BebasNeueBold.eot');
+    src: url('/webfonts/BebasNeueBold?#iefix') format('embedded-opentype'), url('/webfonts/BebasNeueBold.woff') format('woff'), url('/webfonts/BebasNeueBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    text-transform: initial;
+}
+
+@font-face {
+    font-family: 'BebasNeueBook';
+    src: url('/webfonts/BebasNeueBook.otf');
+    src: url('/webfonts/BebasNeueBook.eot');
+    src: url('/webfonts/BebasNeueBook?#iefix') format('embedded-opentype'), url('/webfonts/BebasNeueBook.woff') format('woff'), url('/webfonts/BebasNeueBook.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    text-transform: initial;
+}
+
+@font-face {
+    font-family: 'BebasNeueLight';
+    src: url('/webfonts/BebasNeueLight.otf');
+    src: url('/webfonts/BebasNeueLight.eot');
+    src: url('/webfonts/BebasNeueLight?#iefix') format('embedded-opentype'), url('/webfonts/BebasNeueLight.woff') format('woff'), url('/webfonts/BebasNeueLight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    text-transform: initial;
+}
+
+.topbar {
+    width: 100%;
+    height: 125px;
+    border-bottom: solid 4px #8a8a8a;
+    background: white;
+    padding: 15px 0;
+    margin: 0 0 30px 0;
+
+    .social {
+        margin: 10px 0 0 0;
+
+        p {
+            margin: 0 0 5px 0;
+        }
+    }
+}
+
+.logoh1 {
+    margin-top: 10px;
+    font-family: BebasNeueBold, sans-serif, Geneva, Verdana, Arial;
+    font-size: 50px;
+    line-height: 1;
+}
+
+.logoh2 {
+    font-family: sans-serif, Geneva, Verdana, Arial;
+    font-size: 20px;
+    line-height: 1;
+}
+
+@media (max-width: 640px) {
+    .logoh2 {
+        display: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .logoh1 {
+        font-size:35px;
+    }
+}
+@media (max-width: 270px) {
+    .logoh1 {
+        font-size: 25px;
+    }
+}
+

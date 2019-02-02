@@ -1,0 +1,38 @@
+﻿@model UserLocation
+<div class="modal" tabindex="-1" role="dialog" id="userLocation">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Loc["Change Location"]</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="@Loc["Close"]">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form asp-controller="Home" asp-action="UserLocation" data-ajax="true" data-ajax-method="POST" data-ajax-update="#userLocation" data-ajax-mode="replace-with" id="userLocationForm">
+                <input type="hidden" asp-for="Latitude" data-geo="lat" />
+                <input type="hidden" asp-for="Longitude" data-geo="lng" />
+
+                <div class="modal-body">
+                    <input type="text" asp-for="Address" placeholder="@Loc["Search for your city"]" class="d-block" />
+                    <span class="text-danger" asp-validation-for="Address"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">@Loc["Save changes"]</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Loc["Close"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setupAutocomplete() {
+        $('#userLocation #Address').geocomplete()
+            .bind("geocode:result", function (event, result) {
+                $('#Latitude').val(result.geometry.location.lat());
+                $('#Longitude').val(result.geometry.location.lng());
+            });
+    }
+
+    window.jQuery ? setupAutocomplete() : window.addEventListener('load', setupAutocomplete);
+</script>

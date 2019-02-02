@@ -1,0 +1,41 @@
+﻿@import "variables";
+
+.container {
+    max-width: 1400px;
+}
+
+.white-box {
+    background: white;
+    border-top: solid 4px var(--primary);
+    padding: 20px;
+    margin: 0 0 30px 0;
+
+    h2 {
+        font-size: 16px;
+        margin: 0 0 35px 0;
+    }
+
+
+
+    &.info {
+        border-top-color: var(--info);
+
+        h2 {
+            color: var(--info);
+        }
+    }
+
+
+    &.orange {
+        border-top-color: $orange;
+
+        h2 {
+            color: $orange;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.sidebar-max-width {
+    max-width: 350px;
+}

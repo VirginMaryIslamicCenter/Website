@@ -1,0 +1,17 @@
+﻿@import "variables.scss";
+
+#calendarBox {
+    .datepicker-inline {
+        width: 350px;
+
+        table {
+            width: 100%;
+
+            tbody tr td:first-child,
+            thead tr:last-child th:first-child {
+                // sunday is orange according to PSD
+                color: $orange;
+            }
+        }
+    }
+}

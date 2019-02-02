@@ -1,0 +1,33 @@
+﻿@import "variables";
+
+#location {
+    .col-auto {
+        font-size: 24px;
+    }
+    .col {
+        padding-left: 0;
+
+        p {
+            margin: 0 0 5px 0;
+            font-size: 14px;
+            
+            &.title {
+                font-size: 18px;
+            }
+        }
+    }
+
+    img {
+        margin: 20px 0 0 0;
+    }
+}
+
+#userLocation {
+    #Address {
+        width: 100%;
+    }
+}
+
+.pac-container {
+    z-index: 9999;
+}
