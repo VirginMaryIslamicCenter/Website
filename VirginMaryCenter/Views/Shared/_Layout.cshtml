@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Configuration
+@using System.IO
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,14 +9,50 @@
     <title>Virgin Mary Islamic Center - @ViewData["Title"]</title>
 
     <link rel="stylesheet" href="~/css/homepage.min.css" />
+
+    <environment include="local">
+        <script src="~/js/thirdparty.all.js"></script>
+        @*<script src="@(Configuration.GetSection("SignalRServer").Value)/hubs"></script>*@
+
+        @{
+            foreach (string file in Directory.GetFiles("wwwroot/source-js/angular/app/", "*.js", SearchOption.AllDirectories))
+            {
+                <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
+            }
+            foreach (string file in Directory.GetFiles("wwwroot/source-js/angular/services/", "*.js", SearchOption.AllDirectories))
+            {
+                <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
+            }
+            foreach (string file in Directory.GetFiles("wwwroot/source-js/angular/controllers/", "*.js", SearchOption.AllDirectories))
+            {
+                <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
+            }
+
+        }
+    </environment>
+
+    <environment exclude="local">
+        <script src="~/js/thirdparty.all.min.js" asp-append-version="true"></script>
+        @*<script src="@(Configuration.GetSection("SignalRServer").Value)/hubs"></script>*@
+
+        <script src="~/js/angularcode.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    @*<link href="~/css/thirdparty.all.min.css" rel="stylesheet" asp-append-version="true" />*@
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    @*<link href="~/css/status.css" rel="stylesheet" asp-append-version="true" />*@
+
+
+
 </head>
-<body>
-    @Html.Partial("_Topbar")
+<body ng-app="app">
+    @await Html.PartialAsync("_Topbar")
 
     <div class="container">
         @RenderBody()
     </div>
 
-    @RenderSection("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,62 +1,53 @@
-﻿@model Event
-@{ 
+﻿@{ 
     var ui = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat;
-    bool night = Model.StartDate.Hour >= 18;
+   // bool night = Model.StartDate.Hour >= 18;
 }
 <div class="event-box">
-    <div class="event-picture" style="background-image: url(data:image/png;base64,@Convert.ToBase64String(Model.Image))">
-        @if (!User.Identity.IsAuthenticated)
-        {
-            <a href="#" class="delete text-danger">
-                <i class="far fa-trash-alt"></i>
-                Delete this event
-            </a>
-        }
+    <div class="event-picture" style="background-image: url()">
         <div class="date-box">
             <div class="row">
                 <div class="col-auto date">
                     <div class="row">
                         <div class="col-auto">
-                            <p class="day">@ui.GetDayName(Model.StartDate.DayOfWeek).ToUpper()</p>
-                            <p class="month">@ui.GetMonthName(Model.StartDate.Month).ToUpper()</p>
+                            <p class="day">WED@*ui.GetDayName(Model.StartDate.DayOfWeek).ToUpper()*@</p>
+                            <p class="month">JAN @*ui.GetMonthName(Model.StartDate.Month).ToUpper()*@</p>
                         </div>
                         <div class="col">
-                            <p class="day-number">@Model.StartDate.Day</p>
+                            <p class="day-number">55@*Model.StartDate.Day*@</p>
                         </div>
                     </div>
                 </div>
-                <div class="col time @(night ? "night" : "day")">
-                    <i class="far fa-@(night ? "moon" : "sun")"></i>
+                <div class="col time {{night ? "night" : "day"}}">
+                    <i class="far fa-{{night ? "moon" : "sun"}}"></i>
+                    @*
                     @Model.StartDate.ToString("hh:mm tt")
                     @if (Model.EndDate.HasValue)
                     {
                         @:- 
                         @Model.EndDate.Value.ToString("hh:mm tt")
                     }
+                        *@
                 </div>
             </div>
         </div>
 
         <div class="content">
-            <h2>@Model.Title</h2>
-            <p>@Model.Description</p>
+            <h2>{{Title}}</h2>
+            <p>{{Description}}</p>
         </div>
     </div>
 
     <div class="row event-info">
         <div class="col location">
-            @if (Model.Location != null)
-            {
-                <div class="row">
-                    <div class="col-auto"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="col">
-                        <p>@Model.Location.Venue</p>
-                        <p>@Model.Location.Address</p>
-                        <p>@Model.Location.City, @Model.Location.State @Model.Location.PostalCode</p>
-                        <a href="#">Get directions</a>
-                    </div>
+            <div class="row">
+                <div class="col-auto"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="col">
+                    <p>{{Location.Venue}}</p>
+                    <p>{{Location.Address}}</p>
+                    <p>{{Location.City}}, {{Location.State}} {{Location.PostalCode}}</p>
+                    <a href="#">Get directions</a>
                 </div>
-            }
+            </div>
         </div>
         <div class="col-ml-auto actions">
             <a href="#" class="btn btn-primary">SHARE</a>

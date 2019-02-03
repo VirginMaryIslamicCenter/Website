@@ -6,6 +6,8 @@
 @section Scripts {
     <script type="text/javascript" async src="https://maps.googleapis.com/maps/api/js?key=@config.GoogleMapsAPIKey&libraries=places"></script>
     <script async src="~/js/homepage.min.js"></script>
+
+
 }
 
 
@@ -14,13 +16,11 @@
         @await Html.PartialAsync("_Fundraising")
 
 
-        <div class="white-box info event-box">
+        <div class="white-box info event-box" ng-controller="mainCtrl">
             <h2>@Loc["UPCOMING EVENTS"]</h2>
 
-            @foreach (Event evt in Model.FutureEvents)
-            {
-                @await Html.PartialAsync("_Event", evt)
-            }
+            @await Html.PartialAsync("_Event")
+           
         </div>
 
     </div>

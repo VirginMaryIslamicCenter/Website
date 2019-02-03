@@ -39,6 +39,32 @@
     ]
   },
   {
+    "outputFileName": "thirdparty.all.js",
+    "inputFiles": [
+      "node_modules/angular/angular.js",
+      "node_modules/angular-sanitize/angular-sanitize.js"
+    ],
+    "minify": {"enabled": false, "renameLocals": false},
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "thirdparty.all.min.js",
+    "inputFiles": [
+      "node_modules/angular/angular.min.js",
+      "node_modules/angular-sanitize/angular-sanitize.min.js"
+    ],
+    "minify": {"enabled": true,"renameLocals": true},
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "angularcode.min.js",
+    "inputFiles": [
+      "wwwroot/source-js/angular/app/*.js",
+      "wwwroot/source-js/angular/services/*.js",
+      "wwwroot/source-js/angular/controllers/*.js"
+    ]
+  },
+  {
     "outputFileName": "homepage.min.js",
     "inputFiles": [
       "node_modules/jquery/dist/jquery.js",
