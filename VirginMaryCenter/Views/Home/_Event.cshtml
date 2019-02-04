@@ -7,7 +7,7 @@
     <h2>@Loc["UPCOMING EVENTS"]</h2>
 
     <div class="event-box" ng-repeat="event in events">
-        <div class="event-picture" style="background-image: url()">
+        <div class="event-picture" style="background-image: url({{event.cover.source}})">
             <div class="date-box">
                 <div class="row">
                     <div class="col-auto date">
@@ -21,9 +21,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col time {{night ? "night" : "day"}}">
+                    <div class="col time day {{night ? "night" : "day"}}">
                         <i class="far fa-{{night ? "moon" : "sun"}}"></i>
-                        @*
+                                             5:30 pm - 3:30pm   
+    @*
                             @Model.StartDate.ToString("hh:mm tt")
                             @if (Model.EndDate.HasValue)
                             {
@@ -35,9 +36,9 @@
                 </div>
             </div>
 
-            <div class="content">
-                <h2>{{Title}}</h2>
-                <p>{{Description}}</p>
+            <div class="content" style="max-height: 200px">
+                <h2>{{event.name}}</h2>
+                <p>{{event.description}}</p>
             </div>
         </div>
 
@@ -46,9 +47,9 @@
                 <div class="row">
                     <div class="col-auto"><i class="fas fa-map-marker-alt"></i></div>
                     <div class="col">
-                        <p>{{Location.Venue}}</p>
-                        <p>{{Location.Address}}</p>
-                        <p>{{Location.City}}, {{Location.State}} {{Location.PostalCode}}</p>
+                        <p>{{event.place.name}}</p>
+                        <p>{{event.place.location.street}}</p>
+                        <p>{{event.place.location.city}}, {{event.place.location.state}} {{event.place.location.zip}}</p>
                         <a href="#">Get directions</a>
                     </div>
                 </div>

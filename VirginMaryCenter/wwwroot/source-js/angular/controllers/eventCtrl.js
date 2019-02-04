@@ -2,7 +2,7 @@
     $scope.loading = true;
     $scope.events = [];
 
-    $scope.eventView = function() {
+    $scope.eventView = function () {
         $scope.loading = true;
 
         $http({
@@ -11,7 +11,8 @@
             params: {
             }
         }).then(function successCallback(response) {
-            $scope.events = response.data.data;
+            console.log("test");
+            $scope.events = JSON.parse(response.data).data;
             console.log($scope.events);
             $scope.loading = false;
         }, function errorCallback(response) {

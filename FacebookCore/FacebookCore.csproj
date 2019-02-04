@@ -17,6 +17,7 @@
     <PackageReleaseNotes>Update to .NET Standard 2.0.
 Library version also updated to 2.0.0 to be consisted with the new 2.0.
 For erlier .NET Core or .NET Standard versions, use version &lt; 2.0.0</PackageReleaseNotes>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
