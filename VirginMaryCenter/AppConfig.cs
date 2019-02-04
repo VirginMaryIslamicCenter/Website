@@ -8,6 +8,9 @@ namespace VirginMaryCenter
     {
         public const string LocationCookieName = "lc";
 
+        public string Title { get; set; }
+        public string SubTitle { get; set; }
+
         public bool EnableFundraising { get; set; }
         public string GoogleMapsAPIKey { get; set; }
 

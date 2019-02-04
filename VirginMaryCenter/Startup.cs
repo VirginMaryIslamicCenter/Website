@@ -75,8 +75,10 @@ namespace VirginMaryCenter
                 //app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+            app.UseHttpsRedirection();
 
+            app.UseStaticFiles();
+            
             app.UseAuthentication();
 
             app.UseMvc(routes =>
