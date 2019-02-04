@@ -15,4 +15,8 @@
     <Folder Include="wwwroot\source-js\NewFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FacebookCore\FacebookCore.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -9,20 +9,11 @@
 
 
 }
-
-
 <div class="row">
     <div class="col-md">
         @await Html.PartialAsync("_Fundraising")
-
-
-        <div class="white-box info event-box" ng-controller="mainCtrl">
-            <h2>@Loc["UPCOMING EVENTS"]</h2>
-
-            @await Html.PartialAsync("_Event")
-           
-        </div>
-
+        @await Html.PartialAsync("_Event")
+       
     </div>
     <div class="col-md-auto">
         @await Html.PartialAsync("_UserLocation", Model.Location)
