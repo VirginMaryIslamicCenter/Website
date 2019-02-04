@@ -1,25 +1,42 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using FacebookCore;
+using Newtonsoft.Json.Linq;
+using VirginMaryCenter.Code;
 
 namespace VirginMaryCenter.Controllers
 {
-    [Route("api/[controller]")]
-    public class APIController : Controller
+    [ApiController]
+    public class APIController : ControllerBase
     {
+       
+        /*IF THIS IS NOT RETURNING RESULTS, GO TO:
+        https://www.virginmarycenter.org/admin/facebookFix
+        and get the new token and replace it here:
+             */  
+        const string FB_NONEXPIRING_ACCESSTOKEN = "EAALUOCj40nUBAI0mtRkTXai5zLmlPOIWrlCpIkKfNIfWgqsZCjPDdS2sFeIho86Yff05nnvrwxH74lM0buIDwBOEqZAexx7ed9zJEwgrtSNFyr3GJHRtNzFJJhduLwS7RIwBYnT9WMi99gNs4fzA4D1PrNgCwZD";
+        
         // GET: api/<controller>
         [HttpGet]
         [Route("api/events")]
-        public async Task<string> Events()
+        [Produces("application/json")]
+        public async Task<IActionResult> Events()
         {
+            var fb = new FacebookClient(FacebookCredentials.FB_APPID, FacebookCredentials.FB_SECRET, FacebookCredentials.FB_VER);
+            
             const string FB_GRAPHURL = "https://graph.facebook.com/v3.2";
-            const string FB_ACCESSTOKEN = "EAALUOCj40nUBABSmAYJMIyHHkvvhTzfplEeJaXm9JmRIXBK0WLpK31ZCGno5Tyylb0fz1sj9p7YZCvc2GlFjrc2z6xZCZCTuLOUJNVVA6X60FEHmigrg4XZAzh0fnNNREWKMCKNIsHOuB7FdFsoZCX8EP66eyI4mQG60r5wNabMN7aJwlqGLSqInZCZCHZANc93IGLiZCl7rfUzgZDZD";
             const string FB_PAGE = "VirginMaryCenter";
-            const string FB_FIELDS = "cover%2Cdescription%2Cplace%2Cattending_count%2Cmaybe_count%2Cpicture";
-            HttpClient hc = new HttpClient();
-            string eventStr = await hc.GetStringAsync($"{FB_GRAPHURL}/{FB_PAGE}/events?fields={FB_FIELDS}&access_token={FB_ACCESSTOKEN}"); 
+            const string FB_FIELDS = "cover,description,place,attending_count,maybe_count,picture,name,end_time,event_times,is_canceled,is_draft,start_time,updated_time";
 
-            return eventStr;
+            var url = $"{FB_GRAPHURL}/{FB_PAGE}/events?fields={FB_FIELDS}&access_token={FB_NONEXPIRING_ACCESSTOKEN}";
+            HttpClient hc = new HttpClient();
+            string eventStr = await hc.GetStringAsync(url); 
+
+            return Ok(eventStr);
         }
+
+
+
     }
 }
