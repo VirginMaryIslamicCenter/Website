@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using FacebookCore;
+//using FacebookCore;
 using Newtonsoft.Json.Linq;
 using VirginMaryCenter.Code;
 
@@ -23,7 +23,7 @@ namespace VirginMaryCenter.Controllers
         [Produces("application/json")]
         public async Task<IActionResult> Events()
         {
-            var fb = new FacebookClient(FacebookCredentials.FB_APPID, FacebookCredentials.FB_SECRET, FacebookCredentials.FB_VER);
+            //var fb = new FacebookClient(FacebookCredentials.FB_APPID, FacebookCredentials.FB_SECRET, FacebookCredentials.FB_VER);
             
             const string FB_GRAPHURL = "https://graph.facebook.com/v3.2";
             const string FB_PAGE = "VirginMaryCenter";

@@ -3,63 +3,68 @@
     // bool night = Model.StartDate.Hour >= 18;
 }
 
-<div class="white-box info event-box" ng-controller="eventCtrl">
-    <h2>@Loc["UPCOMING EVENTS"]</h2>
+<div ng-controller="eventCtrl">
+    <div class="white-box info event-box" ng-repeat="currentPeriod in eventPeriods">
+        <h2>{{currentPeriod.name}}</h2>
 
-    <div class="event-box" ng-repeat="event in events">
-        <div class="event-picture" style="background-image: url({{event.cover.source}})">
-            <div class="date-box">
-                <div class="row">
-                    <div class="col-auto date">
-                        <div class="row">
-                            <div class="col-auto">
-                                <p class="day">WED@*ui.GetDayName(Model.StartDate.DayOfWeek).ToUpper()*@</p>
-                                <p class="month">JAN @*ui.GetMonthName(Model.StartDate.Month).ToUpper()*@</p>
-                            </div>
-                            <div class="col">
-                                <p class="day-number">55@*Model.StartDate.Day*@</p>
+        
+        <div class="event-box" ng-repeat="event in currentPeriod.data">
+
+            <div class="event-picture" style="background-image: url({{event.cover.source}})">
+                <div class="date-box">
+                    <div class="row">
+                        <div class="col-auto date">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <p class="day">WED@*ui.GetDayName(Model.StartDate.DayOfWeek).ToUpper()*@</p>
+                                    <p class="month">JAN @*ui.GetMonthName(Model.StartDate.Month).ToUpper()*@</p>
+                                </div>
+                                <div class="col">
+                                    <p class="day-number">55@*Model.StartDate.Day*@</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col time day {{night ? "night" : "day"}}">
-                        <i class="far fa-{{night ? "moon" : "sun"}}"></i>
-                                             5:30 pm - 3:30pm   
-    @*
+                        <div class="col time day {{night ? "night" : "day"}}">
+                            <i class="far fa-{{night ? "moon" : "sun"}}"></i>
+                            5:30 pm - 3:30pm
+                            @*
                             @Model.StartDate.ToString("hh:mm tt")
                             @if (Model.EndDate.HasValue)
                             {
                                 @:-
                                 @Model.EndDate.Value.ToString("hh:mm tt")
                             }
-                        *@
+                            *@
+                        </div>
                     </div>
+                </div>
+
+                <div class="content" style="max-height: 200px">
+                    <h2>{{event.name}}</h2>
+                    <p>{{event.description}}</p>
                 </div>
             </div>
 
-            <div class="content" style="max-height: 200px">
-                <h2>{{event.name}}</h2>
-                <p>{{event.description}}</p>
-            </div>
-        </div>
-
-        <div class="row event-info">
-            <div class="col location">
-                <div class="row">
-                    <div class="col-auto"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="col">
-                        <p>{{event.place.name}}</p>
-                        <p>{{event.place.location.street}}</p>
-                        <p>{{event.place.location.city}}, {{event.place.location.state}} {{event.place.location.zip}}</p>
-                        <a href="#">Get directions</a>
+            <div class="row event-info">
+                <div class="col location">
+                    <div class="row">
+                        <div class="col-auto"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="col">
+                            <p>{{event.place.name}}</p>
+                            <p>{{event.place.location.street}}</p>
+                            <p>{{event.place.location.city}}, {{event.place.location.state}} {{event.place.location.zip}}</p>
+                            <a href="#">Get directions</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-ml-auto actions">
-                <a href="#" class="btn btn-primary">SHARE</a>
-                <p>
-                    <a href="#"><i class="far fa-calendar-alt"></i> Add to Calendar</a>
-                </p>
+                <div class="col-ml-auto actions">
+                    <a href="#" class="btn btn-primary">SHARE</a>
+                    <p>
+                        <a href="#"><i class="far fa-calendar-alt"></i> Add to Calendar</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+
 </div>

@@ -14,8 +14,7 @@
       "launchUrl": "https://localhost:44334/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "use64Bit": true
+      }
     },
     "VirginMaryCenter": {
       "commandName": "Project",
