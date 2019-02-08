@@ -19,6 +19,7 @@
     "jquery-ajax-unobtrusive": "3.2.4",
     "geocomplete": "1.7.0",
     "angular": "1.7.5",
-    "angular-sanitize": "1.7.5"
+    "angular-sanitize": "1.7.5",
+    "moment": "2.24.0"
   }
 }

@@ -1,51 +1,56 @@
-﻿@{
+﻿@using System.Net
+
+@{
     var ui = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat;
     // bool night = Model.StartDate.Hour >= 18;
 }
 
 <div ng-controller="eventCtrl">
-    <div class="white-box info event-box" ng-repeat="currentPeriod in eventPeriods">
-        <h2>{{currentPeriod.name}}</h2>
+    <div class="white-box info event-box" ng-repeat="currentPeriod in eventPeriods"  ng-show="currentPeriod.show">
+        <h2>{{currentPeriod.name | uppercase}}</h2>
 
         
-        <div class="event-box" ng-repeat="event in currentPeriod.data">
+        <div class="event-box" ng-repeat="event in currentPeriod.data | limitTo : currentPeriod.limitTo">
 
-            <div class="event-picture" style="background-image: url({{event.cover.source}})">
-                <div class="date-box">
+            <div class="event-picture" ng-style="{'background-image':'url({{event.cover.source}})'}" ng-class="{gScale : currentPeriod.name == 'PAST EVENTS'}">
+                <div ng-class="{'date-box' : !event.default, 'date-box-default' : event.default }">
                     <div class="row">
                         <div class="col-auto date">
                             <div class="row">
                                 <div class="col-auto">
-                                    <p class="day">WED@*ui.GetDayName(Model.StartDate.DayOfWeek).ToUpper()*@</p>
-                                    <p class="month">JAN @*ui.GetMonthName(Model.StartDate.Month).ToUpper()*@</p>
+                                    <p class="day">{{event.start_time | date : "EEE" | uppercase}}</p>
+                                    <p class="month">{{event.start_time | date : "MMM" | uppercase}}</p>
                                 </div>
                                 <div class="col">
-                                    <p class="day-number">55@*Model.StartDate.Day*@</p>
+                                    <p class="day-number">{{event.start_time | date : "dd"}}</p>
                                 </div>
+                                <div class="col"  ng-hide="sameDate(event.start_time, event.end_time)"> - </div>
+                                <div class="col-auto"  ng-hide="sameDate(event.start_time, event.end_time)">
+                                    <p class="day">{{event.end_time | date : "EEE" | uppercase}}</p>
+                                    <p class="month">{{event.end_time | date : "MMM" | uppercase}}</p>
+                                </div>
+                                <div class="col" ng-hide="sameDate(event.start_time, event.end_time)">
+                                    <p class="day-number">{{event.end_time | date : "dd"}}</p>
+                                </div>
+                                
+
                             </div>
                         </div>
-                        <div class="col time day {{night ? "night" : "day"}}">
-                            <i class="far fa-{{night ? "moon" : "sun"}}"></i>
-                            5:30 pm - 3:30pm
-                            @*
-                            @Model.StartDate.ToString("hh:mm tt")
-                            @if (Model.EndDate.HasValue)
-                            {
-                                @:-
-                                @Model.EndDate.Value.ToString("hh:mm tt")
-                            }
-                            *@
+                        <div class="col time {{getEventBackground(event.start_time)}}"  ng-hide="event.default">
+
+                            <i class="far {{getEventBackgroundIcon(event.start_time)}}"></i>
+                            {{event.start_time | date : "h:mma" | lowercase}} - {{event.end_time | date : "h:mma" | lowercase}}
                         </div>
                     </div>
                 </div>
 
                 <div class="content" style="max-height: 200px">
                     <h2>{{event.name}}</h2>
-                    <p>{{event.description}}</p>
+                    <p style="white-space: pre-line;">{{filterDesc(event.description)}}</p>
                 </div>
             </div>
 
-            <div class="row event-info">
+            <div class="row event-info" ng-hide="event.default">
                 <div class="col location">
                     <div class="row">
                         <div class="col-auto"><i class="fas fa-map-marker-alt"></i></div>
@@ -53,7 +58,7 @@
                             <p>{{event.place.name}}</p>
                             <p>{{event.place.location.street}}</p>
                             <p>{{event.place.location.city}}, {{event.place.location.state}} {{event.place.location.zip}}</p>
-                            <a href="#">Get directions</a>
+                            <a target="_blank" ng-href="{{getGoogleMapDirection(event.place.location.street, event.place.location.city, event.place.location.state)}}">Get directions</a>
                         </div>
                     </div>
                 </div>
@@ -65,6 +70,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="btn btn-primary col-12" style="margin-top: 20px" ng-show="currentPeriod.limitTo < currentPeriod.data.length" ng-click="currentPeriod.limitTo = currentPeriod.limitTo + 5">
+            Show more {{currentPeriod.name | lowercase}}
+        </div>
+
     </div>
 
 </div>

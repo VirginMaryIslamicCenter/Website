@@ -1,4 +1,6 @@
-﻿<div class="white-box info" id="fundraising">
+﻿@if (config.EnableFundraising) { 
+
+<div class="white-box info" id="fundraising">
     <h2>@Loc["FUNDRAISING"]</h2>
 
     <div class="row">
@@ -30,3 +32,4 @@
         </div>
     </div>
 </div>
+}

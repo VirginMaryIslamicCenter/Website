@@ -4,18 +4,14 @@
 }
 
 @section Scripts {
-    <script type="text/javascript" async src="https://maps.googleapis.com/maps/api/js?key=@config.GoogleMapsAPIKey&libraries=places"></script>
-    <script async src="~/js/homepage.min.js"></script>
-
-
 }
 <div class="row">
-    <div class="col-md">
+    <div class="col-lg-8 col-md-12  col-sm-12 col-xs-12">
         @await Html.PartialAsync("_Fundraising")
         @await Html.PartialAsync("_Event")
        
     </div>
-    <div class="col-md-auto">
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
         @await Html.PartialAsync("_UserLocation", Model.Location)
         @await Html.PartialAsync("_PrayerTimes")
         @await Html.PartialAsync("_Subscribe", new SubscribeModel())

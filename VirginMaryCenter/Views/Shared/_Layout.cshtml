@@ -1,5 +1,6 @@
 ﻿@using Microsoft.Extensions.Configuration
 @using System.IO
+@using Newtonsoft.Json
 
 <!DOCTYPE html>
 <html>
@@ -7,12 +8,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virgin Mary Islamic Center - @ViewData["Title"]</title>
-
     <link rel="stylesheet" href="~/css/homepage.min.css" />
 
-    <environment include="local">
+
+    <script type="text/javascript" async src="https://maps.googleapis.com/maps/api/js?key=@config.GoogleMapsAPIKey&libraries=places"></script>
+    
+    <environment include="development">
         <script src="~/js/thirdparty.all.js"></script>
         @*<script src="@(Configuration.GetSection("SignalRServer").Value)/hubs"></script>*@
+
 
         @{
             foreach (string file in Directory.GetFiles("wwwroot/source-js/angular/app/", "*.js", SearchOption.AllDirectories))
@@ -20,6 +24,10 @@
                 <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
             }
             foreach (string file in Directory.GetFiles("wwwroot/source-js/angular/services/", "*.js", SearchOption.AllDirectories))
+            {
+                <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
+            }
+            foreach (string file in Directory.GetFiles("wwwroot/source-js/angular/directives/", "*.js", SearchOption.AllDirectories))
             {
                 <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
             }
@@ -31,7 +39,8 @@
         }
     </environment>
 
-    <environment exclude="local">
+    <environment exclude="development">
+
         <script src="~/js/thirdparty.all.min.js" asp-append-version="true"></script>
         @*<script src="@(Configuration.GetSection("SignalRServer").Value)/hubs"></script>*@
 
@@ -39,11 +48,7 @@
     </environment>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    @*<link href="~/css/thirdparty.all.min.css" rel="stylesheet" asp-append-version="true" />*@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    @*<link href="~/css/status.css" rel="stylesheet" asp-append-version="true" />*@
-
-
 
 </head>
 <body ng-app="app">

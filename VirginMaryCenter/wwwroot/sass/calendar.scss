@@ -15,3 +15,121 @@
         }
     }
 }
+
+
+@mixin vertical-centre ($height: 100%) {
+    height: $height;
+    line-height: $height !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+calendar {
+    float: left;
+    display: block;
+    background: white;
+    width: 100%;
+    margin-bottom: 10px;
+
+    $event-colour: #b74313;
+    $weekend-colour: #d76519;
+    $selected-colour: #7e130e;
+    $secondary-colour: #2875C7;
+    $spacing: 10px;
+    $icon-width: 40px;
+    $header-height: 40px;
+
+    > div.header {
+        float: left;
+        width: 100%;
+        height: $header-height;
+        color: black;
+
+        > * {
+            @include vertical-centre($header-height);
+        }
+
+        > i {
+            float: left;
+            width: $icon-width;
+            font-size: 1.125em;
+            font-weight: bold;
+            position: relative;
+            padding: 0 $spacing;
+            cursor: pointer;
+        }
+
+        > i.fa-angle-left {
+            text-align: left;
+        }
+
+        > i.fa-angle-right {
+            text-align: right;
+            margin-left: $icon-width*-1;
+        }
+
+        > span {
+            float: left;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding-left: $icon-width+$spacing;
+            margin-left: $icon-width*-1;
+            text-align: center;
+            padding-right: $icon-width;
+            color: inherit;
+        }
+    }
+
+    > div.week {
+        float: left;
+        width: 100%;
+
+        .weekend {
+            color: $weekend-colour;
+            font-weight: 700;
+        }
+
+        .weekday {
+            font-weight: 700;
+        }
+
+        > span.day {
+            float: left;
+            width: (12.28%);
+            margin: 1%;
+            border-radius: 20px;
+            font-size: 1em;
+            text-align: center;
+            @include vertical-centre(30px);
+            background: white;
+            cursor: pointer;
+            color: black;
+
+            &.weekend {
+                color: $weekend-colour;
+            }
+
+            &.today {
+                background: #E3F2FF;
+            }
+
+            &.hasEvent {
+                background: $event-colour;
+                color: white;
+
+                &.selected {
+                    background: $selected-colour !important;
+                }
+            }
+
+            &.different-month {
+                color: #C0C0C0;
+            }
+        }
+        /*&.names > span {
+            color: $secondary-colour;
+            font-weight: bold;
+        }*/
+    }
+}

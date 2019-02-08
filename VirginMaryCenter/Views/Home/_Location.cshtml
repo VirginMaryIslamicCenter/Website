@@ -1,4 +1,6 @@
-﻿<div class="white-box orange" id="location">
+﻿@using System.Net
+
+<div class="white-box orange" id="location">
     <h2>@Loc["LOCATION"]</h2>
 
     <div class="row">
@@ -9,9 +11,11 @@
             <p class="title">@config.Location.Venue</p>
             <p>@config.Location.Address</p>
             <p>@config.Location.City, @config.Location.State</p>
-            <p><a href="#">Get driving directions</a></p>
+            <p><a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=@WebUtility.UrlEncode(config.Location.Address)+@WebUtility.UrlEncode(config.Location.City)+,+@WebUtility.UrlEncode(config.Location.State)">Get driving directions</a></p>
         </div>
     </div>
 
-    <img src="https://maps.googleapis.com/maps/api/staticmap?center=@config.Location.Latitude,@config.Location.Longitude&zoom=13&size=350x220&markers=color:red%7C@(config.Location.Latitude),@config.Location.Longitude&key=@config.GoogleMapsAPIKey" alt="Location" />
+    <a target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=@WebUtility.UrlEncode(config.Location.Address)+@WebUtility.UrlEncode(config.Location.City)+,+@WebUtility.UrlEncode(config.Location.State)">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=@config.Location.Latitude,@config.Location.Longitude&zoom=13&size=350x220&markers=color:red%7C@(config.Location.Latitude),@config.Location.Longitude&key=@config.GoogleMapsAPIKey" alt="Location" style="width: 100%" />
+    </a>
 </div>

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Localization;
 using VirginMaryCenter.Data;
 using VirginMaryCenter.Models;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace VirginMaryCenter.Controllers
 {
@@ -26,8 +27,12 @@ namespace VirginMaryCenter.Controllers
             config = cfg;
         }
 
+        
+
         public async Task<IActionResult> Index()
         {
+           
+            
             var model = new IndexModel
             {
                 FutureEvents = await db.GetFutureEvents(),

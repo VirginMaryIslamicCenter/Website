@@ -1,8 +1,9 @@
 ﻿@import "variables";
 
 .event-box {
+
     .event-picture {
-        height: 335px;
+        height: 365px;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center 30px;
@@ -18,23 +19,47 @@
         }
 
         .date-box {
-            color: white;
-            display: inline-block;
-            height: 65px;
-            border-bottom: solid 5px white;
-            position: relative;
-
             &::after {
                 content: "";
-                right: -64px;
+                right: -69px;
                 top: 1px;
-                border: solid 32px transparent;
+                border: solid 35px transparent;
                 border-left-color: white;
                 position: absolute;
                 width: 0;
                 height: 0;
                 z-index: 1;
+
+                @media (max-width: 500px) {
+                    display: none;
+                }
             }
+        }
+
+        .date-box-default {
+            &::after {
+                content: "";
+                right: -30px;
+                top: 20px;
+                border: solid 15px transparent;
+                border-left-color: white;
+                position: absolute;
+                width: 0;
+                height: 0;
+                z-index: 0;
+
+                @media (max-width: 500px) {
+                    display: none;
+                }
+            }
+        }
+
+        .date-box, .date-box-default {
+            color: white;
+            display: inline-flex;
+            height: 69px;
+            border-bottom: solid 5px white;
+            position: relative;
 
             > .row {
                 margin-left: 0;
@@ -44,17 +69,33 @@
             .date {
                 background: $gray;
 
+                &::after {
+                    content: "";
+                    right: -42px;
+                    top: 0px;
+                    border: solid 31px transparent;
+                    border-left-color: #484444;
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    z-index: 1;
+
+                    @media (max-width: 500px) {
+                        display: none;
+                    }
+                }
+
                 > .row {
                     padding: 10px;
 
                     > div {
-                        padding-top: 0;
-                        padding-bottom: 0;
+                        padding: 0 5px;
+                        z-index: 2;
                     }
                 }
 
                 .day {
-                    margin: 0 0 5px 0;
+                    margin: 4px 0 0 0;
                     font-weight: bold;
                     font-size: 18px;
                     line-height: 16px;
@@ -62,7 +103,7 @@
 
                 .month {
                     margin: 0;
-                    font-size: 14px;
+                    font-size: 16px;
                 }
 
                 .day-number {
@@ -78,26 +119,34 @@
                 color: white;
                 line-height: 60px;
                 font-size: 20px;
+                white-space: nowrap;
 
                 .far {
-                    margin-right: 15px;
+                    margin-right: 10px;
+                    margin-left: 10px;
                 }
+
 
                 &::after {
                     content: "";
-                    right: -60px;
+                    right: -63px;
                     top: 0;
-                    border: solid 30px transparent;
+                    border: solid 32px transparent;
                     height: 0;
                     width: 0;
                     background: transparent;
                     position: absolute;
                     z-index: 2;
+
+                    @media (max-width: 500px) {
+                        display: none;
+                    }
                 }
 
                 &.day {
                     background: $orange;
-                    
+                    padding-left: 20px;
+
                     &::after {
                         border-left-color: $orange;
                     }
@@ -118,12 +167,12 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background: rgba(255, 255, 255, .8);
+            background: rgba(255, 255, 255, .7);
             max-width: 70%;
 
             h2 {
-                background: $gray;
-                color: white;
+                background: rgba(255, 255, 255, .4);
+                color: #020202;
                 margin: 0;
                 font-size: 20px;
                 padding: 10px;
@@ -131,6 +180,8 @@
 
             p {
                 padding: 10px;
+                max-height: 100px;
+                overflow-y: auto;
                 font-weight: 500;
             }
         }
@@ -140,6 +191,7 @@
         margin-top: 15px;
         color: $textGray;
         margin-right: 0;
+        margin-bottom: 45px;
 
         .location {
             > .col, .col-auto {
@@ -148,10 +200,11 @@
 
             .fas {
                 font-size: 24px;
+                margin-top: 5px;
             }
 
             p {
-                margin: 0 0 4px 0;
+                margin: 0 0 -2px 0;
                 font-size: 15px;
                 font-weight: 500;
             }
@@ -184,4 +237,9 @@
             }
         }
     }
+}
+
+
+.gScale {
+    filter: grayscale(100%);
 }

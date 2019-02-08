@@ -1,10 +1,16 @@
 ﻿@using System.Globalization;
-@{ 
+@{
     var ui = CultureInfo.CurrentUICulture;
     var format = ui.DateTimeFormat;
 }
-<div class="white-box orange" id="calendar">
+<div class="white-box orange" id="calendar" ng-controller="calendarCtrl">
     <h2>@Loc["CALENDAR"]</h2>
 
-    <div id="calendarBox" data-date="@config.Location.Now.ToString("yyyy-MM-dd")"></div>
+    <div style="display: inline-block">
+        <calendar selected="day"></calendar>
+    </div>
+
+    <span ng-show="getEventTitle(day)">Event: <b>{{getEventTitle(day)}}</b></span>
 </div>
+
+
