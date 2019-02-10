@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/VirginMaryCenter",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:50713/",
       "sslPort": 44334
@@ -17,11 +21,12 @@
       }
     },
     "VirginMaryCenter": {
-      "commandName": "Project",
+      "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
+      "ancmHostingModel": "InProcess",
       "applicationUrl": "http://localhost:50714/"
     }
   }

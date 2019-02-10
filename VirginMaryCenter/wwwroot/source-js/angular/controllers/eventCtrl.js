@@ -79,7 +79,7 @@
             return false;
     };
     
-    
+
     $scope.eventView = function () {
         $scope.loading = true;
 
@@ -89,23 +89,24 @@
             params: {
             }
         }).then(function successCallback(response) {
-            
-            var eventsAll = JSON.parse(response.data).data;
 
-            console.log(eventDateService.eventDates);
+            var eventsAll = JSON.parse(response.data).data;
 
             eventDateService.eventDates = [];
             for (var x = 0; x < eventsAll.length; x++) {
+                //console.log(eventsAll[x].start_time);
                 eventDateService.eventDates[eventDateService.yyyymmdd(eventsAll[x].start_time)] = eventsAll[x].name;
             }
-            console.log(eventDateService.eventDates);
 
-            $scope.eventPeriods["live"].data = eventsAll.filter(e => new Date(e.start_time) >= new Date() && new Date(e.end_time) <= new Date());
+            $scope.eventPeriods["live"].data = eventsAll.filter(e => (new Date(e.start_time).getTime() <= new Date().getTime() && new Date(e.end_time).getTime() >= new Date().getTime()));
             $scope.eventPeriods["live"].show = $scope.eventPeriods["live"].data.length > 0 ? true : false;
-            if (eventsAll.filter(e => new Date(e.start_time) >= new Date()).length > 0) {
-                $scope.eventPeriods["upcoming"].data = eventsAll.filter(e => new Date(e.start_time) >= new Date());
+
+            var upcomingFilter = (eventsAll.filter(e => new Date(e.start_time).getTime() >= new Date().getTime()))
+            if (upcomingFilter && upcomingFilter.length > 0) {
+                $scope.eventPeriods["upcoming"].data = upcomingFilter;
             }
-            else {
+            else if (!$scope.eventPeriods["live"].data || $scope.eventPeriods["live"].data.length == 0) {
+             
                 $scope.eventPeriods["upcoming"].data = [{
                     default: true,
 
@@ -118,8 +119,15 @@
                     start_time: getNextSaturday(),
                     end_time: getNextSaturday()
                 }];
+
+                $scope.eventPeriods["upcoming"].show = true;
             }
-            $scope.eventPeriods["past"].data = eventsAll.filter(e => new Date(e.start_time) <= new Date());
+            else {
+                $scope.eventPeriods["upcoming"].data = null;
+                $scope.eventPeriods["upcoming"].show = false;
+            }
+            console.log(new Date())
+            $scope.eventPeriods["past"].data = eventsAll.filter(e => new Date(e.end_time).getTime() <= new Date().getTime());
             $scope.eventPeriods["past"].show = $scope.eventPeriods["past"].data.length > 0 ? true : false;
 
             console.log($scope.eventPeriods);
