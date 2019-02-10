@@ -1,31 +1,41 @@
 ﻿@model UserLocation
-<div class="modal" tabindex="-1" role="dialog" id="userLocation">
+<div class="modal" tabindex="-1" role="dialog" id="userLocation" ng-controller="changeLocationCtrl">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">@Loc["Change Location"]</h5>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="@Loc["Close"]">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form asp-controller="Home" asp-action="UserLocation" data-ajax="true" data-ajax-method="POST" data-ajax-update="#userLocation" data-ajax-mode="replace-with" id="userLocationForm">
-                <input type="hidden" asp-for="Latitude" data-geo="lat" />
-                <input type="hidden" asp-for="Longitude" data-geo="lng" />
+            
+            <div class="modal-body" style="margin-top: 25px; padding-bottom: 0;">
+                <div class="group">
+                    <input type="text" ng-model="inputLocation" ng-change="AddressErrorMsg = ''" ng-enter="ChangeLocation()" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Enter Zipcode or City, State</label>
+                    <span class="text-danger">{{AddressErrorMsg}}</span>
+                </div>
+                
+                <div class="group">
+                    <span class="bar ml-1" ng-show="ZipCodeList">Pick the correct city, state and zip:</span>
+                    <span class="btn btn-light mr-2 mb-2"  ng-repeat="zips in ZipCodeList" ng-click="zipClick(zips)">{{zips.city | titlecase}}, {{zips.state}} {{zips.zipCode}}</span>
+                </div>
 
-                <div class="modal-body">
-                    <input type="text" asp-for="Address" placeholder="@Loc["Search for your city"]" class="d-block" />
-                    <span class="text-danger" asp-validation-for="Address"></span>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">@Loc["Save changes"]</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Loc["Close"]</button>
-                </div>
-            </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" ng-click="ChangeLocation()">@Loc["Save changes"]</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Loc["Close"]</button>
+            </div>
+            
         </div>
     </div>
 </div>
 
-<script>
+@*<script>
     function setupAutocomplete() {
         $('#userLocation #Address').geocomplete()
             .bind("geocode:result", function (event, result) {
@@ -35,4 +45,4 @@
     }
 
     window.jQuery ? setupAutocomplete() : window.addEventListener('load', setupAutocomplete);
-</script>
+</script>*@

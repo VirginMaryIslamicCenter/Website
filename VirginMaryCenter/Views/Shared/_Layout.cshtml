@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/css/homepage.min.css" />
 
 
-    <script type="text/javascript" async src="https://maps.googleapis.com/maps/api/js?key=@config.GoogleMapsAPIKey&libraries=places"></script>
+    @*<script type="text/javascript" async src="https://maps.googleapis.com/maps/api/js?key=@config.GoogleMapsAPIKey&libraries=places"></script>*@
     
     <environment include="development">
         <script src="~/js/thirdparty.all.js"></script>
@@ -28,6 +28,10 @@
                 <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
             }
             foreach (string file in Directory.GetFiles("wwwroot/source-js/angular/directives/", "*.js", SearchOption.AllDirectories))
+            {
+                <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
+            }
+            foreach (string file in Directory.GetFiles("wwwroot/source-js/angular/filters/", "*.js", SearchOption.AllDirectories))
             {
                 <script src="@(file.Replace(@"wwwroot/", "").ToString())"></script>
             }
@@ -59,5 +63,33 @@
     </div>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v3.2'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat"
+         attribution=setup_tool
+         page_id="190545521563323"
+         theme_color="#0084ff"
+         logged_in_greeting="Questions about our Islamic center? Ask us!"
+         logged_out_greeting="Questions about our Islamic center? Ask us!">
+    </div>
 </body>
 </html>

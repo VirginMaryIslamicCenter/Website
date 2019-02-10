@@ -3,6 +3,7 @@
     "outputFileName": "homepage.min.css",
     "inputFiles": [
       "wwwroot/sass/common.scss",
+      "wwwroot/sass/materialInput.scss",
       "wwwroot/sass/topbar.scss",
       "wwwroot/sass/fundraising.scss",
       "wwwroot/sass/events.scss",
@@ -51,7 +52,7 @@
       "node_modules/jquery/dist/jquery.js",
       "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
       "node_modules/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js",
-      "node_modules/geocomplete/jquery.geocomplete.js"
+      "node_modules/ngstorage/ngStorage.js"
     ],
     "minify": {"enabled": false, "renameLocals": false},
     "sourceMap": true
@@ -65,7 +66,8 @@
       "node_modules/jquery/dist/jquery.min.js",
       "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
       "node_modules/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js",
-      "node_modules/geocomplete/jquery.geocomplete.min.js"
+      "node_modules/ngstorage/ngStorage.js"
+
     ],
     "minify": {"enabled": true,"renameLocals": true},
     "sourceMap": true
@@ -76,6 +78,7 @@
       "wwwroot/source-js/angular/app/*.js",
       "wwwroot/source-js/angular/services/*.js",
       "wwwroot/source-js/angular/directives/*.js",
+      "wwwroot/source-js/angular/filters/*.js",
       "wwwroot/source-js/angular/controllers/*.js"
     ]
   }

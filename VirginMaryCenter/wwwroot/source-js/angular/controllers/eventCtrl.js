@@ -1,5 +1,7 @@
 ﻿angular.module('app').controller('eventCtrl', ['$scope', '$window', '$http', '$sce', 'eventDateService', function ($scope, $window, $http, $sce, eventDateService) {
     $scope.loading = true;
+    $scope.tmp = "";
+    $scope.tmpjson = "";
 
     var getNextSaturday = function () {
         var dt = new Date();
@@ -85,7 +87,11 @@
             params: {
             }
         }).then(function successCallback(response) {
+            $scope.tmp = response.data;
+
             var eventsAll = JSON.parse(response.data).data;
+
+            $scope.tmpjson = eventsAll;
             console.log(eventDateService.eventDates);
 
             eventDateService.eventDates = [];
@@ -113,7 +119,7 @@
                     end_time: getNextSaturday()
                 }];
             }
-            $scope.eventPeriods["past"].data = eventsAll.filter(e => new Date(e.start_time) < new Date());
+            $scope.eventPeriods["past"].data = eventsAll.filter(e => new Date(e.start_time) <= new Date());
             $scope.eventPeriods["past"].show = $scope.eventPeriods["past"].data.length > 0 ? true : false;
 
             console.log($scope.eventPeriods);

@@ -1,0 +1,248 @@
+﻿$color_gray: #808fa7;
+
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: $color_gray;
+}
+
+
+.bar:before, .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: $color_gray;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+
+.wrap {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    width: 350px;
+    left: 0;
+    margin: 0 auto;
+}
+
+/* select starting stylings ------------------------------*/
+.select {
+    font-family: 'Roboto','Helvetica','Arial',sans-serif;
+    position: relative;
+    width: 100%;
+}
+
+.select-text {
+    position: relative;
+    font-family: inherit;
+    width: 100%;
+    padding: 10px 10px 10px 8px;
+    font-size: 14px;
+    border-radius: 7px;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.12);
+}
+
+/* Remove focus */
+.select-text:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0,0,0, 0);
+}
+
+/* Use custom arrow */
+.select .select-text {
+    appearance: none;
+    -webkit-appearance: none
+}
+
+.select:after {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    /* Styling the down arrow */
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+}
+
+
+/* LABEL ======================================= */
+.select-label {
+    color: rgba(0,0,0, 0.50);
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+/* active state */
+.select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+    color: $color_gray;
+    top: -20px;
+    transition: 0.2s ease all;
+    font-size: 14px;
+}
+
+/* BOTTOM BARS ================================= */
+.select-bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.select-bar:before, .select-bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #2F80ED;
+    transition: 0.2s ease all;
+}
+
+.select-bar:before {
+    left: 50%;
+}
+
+.select-bar:after {
+    right: 50%;
+}
+
+/* active state */
+.select-text:focus ~ .select-bar:before, .select-text:focus ~ .select-bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.select-highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+input {
+    font-size: 14px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border-radius: 7px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+input:focus {
+    outline: none;
+}
+
+label {
+    color: #999;
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* BOTTOM BARS ================================= */
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}

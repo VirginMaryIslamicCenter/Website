@@ -1,5 +1,5 @@
 ﻿(function () {
-    var app = angular.module('app', ['ngSanitize']);
+    var app = angular.module('app', ['ngSanitize', 'ngStorage']);
 
     
     /*    $.connection.hub.url = OCRServiceSyncUrl;

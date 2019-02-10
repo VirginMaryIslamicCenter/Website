@@ -25,6 +25,10 @@
     .table {
         font-size: 14px;
 
+        td {
+            white-space: nowrap;
+        }
+
         .text-right {
             color: black;
         }

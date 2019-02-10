@@ -1,16 +1,16 @@
 ﻿@model IndexModel
-<div class="white-box orange" id="prayerTimes">
+<div class="white-box orange" id="prayerTimes" ng-controller="prayertimeCtrl" >
     <h2>@Loc["PRAYER TIMES"]</h2>
 
     <a class="btn btn-secondary d-block" href="#userLocation" data-toggle="modal">
         <i class="fas fa-map-marker-alt"></i>
-        @Model.Location.Address
+        {{location.city | titlecase }}, {{location.state | uppercase}}
 
         <span>@Loc["change"]</span>
     </a>
 
-    <p class="today">@config.Location.Now.ToString("dddd, MMMM d, yyyy").ToUpper()</p>
-    <table class="table">
+    <p class="today">@config.Location.Now.ToString("dddd, MMMM d").ToUpper()</p>
+    <table class="prayertable table">
 		<tbody>
 			@*<tr>
 			<td>Imsaak</td>
@@ -18,27 +18,27 @@
 		</tr>*@
 			<tr>
 				<td>Fajr</td>
-				<td class="text-right">coming - soon</td>
+                <td class="text-right">{{prayerTimes.fajr  | date : "h:mm a" | lowercase  }} - {{prayerTimes.sunRise | date : "h:mm a" | lowercase  }}</td>
 			</tr>
 			<tr>
 				<td>Noon / Dhuhr</td>
-				<td class="text-right">coming soon</td>
+                <td class="text-right">{{prayerTimes.dhuhr  | date : "h:mm a" | lowercase  }}</td>
 			</tr>
 			<tr>
 				<td>Asr</td>
-				<td class="text-right">coming soon</td>
+                <td class="text-right">{{prayerTimes.asr | date : "h:mm a" | lowercase }} - {{prayerTimes.sunset | date : "h:mm a" | lowercase }}</td>
 			</tr>
 			<tr>
 				<td>Maghrib</td>
-				<td class="text-right">coming soon</td>
+                <td class="text-right">{{prayerTimes.maghrib | date : "h:mm a" | lowercase }}</td>
 			</tr>
 			<tr>
 				<td>Isha</td>
-				<td class="text-right">coming - soon</td>
+                <td class="text-right">{{prayerTimes.isha | date : "h:mm a" | lowercase }} - {{prayerTimes.midnight | date : "h:mm a" | lowercase }}</td>
 			</tr>
 			<tr>
 				<td>Salat ul-Layl</td>
-				<td class="text-right">coming soon</td>
+                <td class="text-right">{{prayerTimes.salatUlLayl | date : "h:mm a" | lowercase }}</td>
 			</tr>
 		</tbody>
     </table>

@@ -4,6 +4,30 @@
     max-width: 1400px;
 }
 
+.modal-content{
+    border-radius: 14px !important;
+    
+}
+
+
+.modal-footer {
+    border-top: unset !important; 
+}
+
+.modal-body {
+    input {
+        width: 100%
+    }
+}
+
+.modal-header {
+    border-top-left-radius: 14px !important;
+    border-top-right-radius: 14px !important;
+    background-color: #fd781d !important;
+    color: white;
+}
+ 
+
 .white-box {
     background: white;
     border-top: solid 4px var(--primary);
