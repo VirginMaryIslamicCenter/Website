@@ -87,11 +87,9 @@
             params: {
             }
         }).then(function successCallback(response) {
-            $scope.tmp = response.data;
-
+            
             var eventsAll = JSON.parse(response.data).data;
 
-            $scope.tmpjson = eventsAll;
             console.log(eventDateService.eventDates);
 
             eventDateService.eventDates = [];
