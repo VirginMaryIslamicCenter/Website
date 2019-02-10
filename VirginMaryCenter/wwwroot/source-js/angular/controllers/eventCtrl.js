@@ -1,12 +1,9 @@
 ﻿angular.module('app').controller('eventCtrl', ['$scope', '$window', '$http', '$sce', 'eventDateService', function ($scope, $window, $http, $sce, eventDateService) {
     $scope.loading = true;
-    $scope.tmp = "";
-    $scope.tmpjson = "";
-
-    $scope.tmp = new Date();
-
+    
     var getNextSaturday = function () {
         var dt = new Date();
+        dt.setDate(dt.getDate() + 1);
 
         while (dt.getDay() !== 6) {
             dt.setDate(dt.getDate() + 1);
@@ -19,6 +16,7 @@
         {
             "live": {
                 name: "LIVE EVENTS",
+                hideOnMobile: false,
                 show: false,
                 data: null,
                 limitTo: 3
@@ -26,11 +24,13 @@
             "upcoming": {
                 name: "UPCOMING EVENTS",
                 show: true,
+                hideOnMobile: false,
                 data: [],
                 limitTo: 3
             },
             "past": {
                 name: "PAST EVENTS",
+                hideOnMobile: true,
                 show: false,
                 data: null,
                 limitTo: 3
@@ -38,11 +38,11 @@
         };
 
     $scope.getEventBackground = function (d) {
-        return new Date(d).getHours() > 16 ? "night" : "day";
+        return parseInt(moment(d).format('H')) > 16 ? "night" : "day";
     };
 
     $scope.getEventBackgroundIcon = function (d) {
-        return new Date(d).getHours() > 16 ? "fa-moon" : "fa-sun";
+        return parseInt(moment(d).format('H')) > 16 ? "fa-moon" : "fa-sun";
     };
 
     $scope.filterDesc = function (desc) {
@@ -69,10 +69,10 @@
     };
 
     $scope.sameDate = function (sT, eT) {
-        var startTime = new Date(sT);
-        var endTime = new Date(eT);
+        var startTime = moment(sT).format('LL');
+        var endTime = moment(eT).format('LL');
 
-        if (startTime.getDate() === endTime.getDate()) {
+        if (startTime === endTime) {
             return true;
         }
         else
@@ -98,14 +98,14 @@
                 eventDateService.eventDates[eventDateService.yyyymmdd(eventsAll[x].start_time)] = eventsAll[x].name;
             }
 
-            $scope.eventPeriods["live"].data = eventsAll.filter(e => (new Date(e.start_time).getTime() <= new Date().getTime() && new Date(e.end_time).getTime() >= new Date().getTime()));
+            $scope.eventPeriods["live"].data = eventsAll.filter(e => moment(e.start_time) <= moment() && moment(e.end_time) >= moment());
             $scope.eventPeriods["live"].show = $scope.eventPeriods["live"].data.length > 0 ? true : false;
 
-            var upcomingFilter = (eventsAll.filter(e => new Date(e.start_time).getTime() >= new Date().getTime()))
+            var upcomingFilter = (eventsAll.filter(e => moment(e.start_time) >= moment()));
             if (upcomingFilter && upcomingFilter.length > 0) {
                 $scope.eventPeriods["upcoming"].data = upcomingFilter;
             }
-            else if (!$scope.eventPeriods["live"].data || $scope.eventPeriods["live"].data.length == 0) {
+            else if (!$scope.eventPeriods["live"].data || $scope.eventPeriods["live"].data.length === 0) {
              
                 $scope.eventPeriods["upcoming"].data = [{
                     default: true,
@@ -126,8 +126,7 @@
                 $scope.eventPeriods["upcoming"].data = null;
                 $scope.eventPeriods["upcoming"].show = false;
             }
-            console.log(new Date())
-            $scope.eventPeriods["past"].data = eventsAll.filter(e => new Date(e.end_time).getTime() <= new Date().getTime());
+            $scope.eventPeriods["past"].data = eventsAll.filter(e => moment(e.end_time) <= moment());
             $scope.eventPeriods["past"].show = $scope.eventPeriods["past"].data.length > 0 ? true : false;
 
             console.log($scope.eventPeriods);

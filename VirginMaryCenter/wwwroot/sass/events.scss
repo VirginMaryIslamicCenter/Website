@@ -1,7 +1,18 @@
 ﻿@import "variables";
 
-.event-box {
+.hideEventMobile {
+    @media (max-width: 991px) {
+        display: none !important;
+    }
+}
+.showEventMobile {
+    @media (min-width: 991px) {
+        display: none !important;
+    }
+}
 
+.event-box {
+    
     .event-picture {
         height: 365px;
         background-repeat: no-repeat;

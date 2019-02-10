@@ -6,11 +6,10 @@
 }
 
 <div ng-controller="eventCtrl">
-    <div class="white-box info event-box" ng-repeat="currentPeriod in eventPeriods"  ng-show="currentPeriod.show">
+    <div class="white-box info event-box" ng-repeat="currentPeriod in eventPeriods" ng-show="currentPeriod.show">
         <h2>{{currentPeriod.name | uppercase}}</h2>
 
-        
-        <div class="event-box" ng-repeat="event in currentPeriod.data | limitTo : currentPeriod.limitTo">
+        <div class="event-box" ng-repeat="event in currentPeriod.data | limitTo : currentPeriod.limitTo" ng-class="{'hideEventMobile' : currentPeriod.hideOnMobile}">
 
             <div class="event-picture" ng-style="{'background-image':'url({{event.cover.source}})'}" ng-class="{gScale : currentPeriod.name == 'PAST EVENTS'}">
                 <div ng-class="{'date-box' : !event.default, 'date-box-default' : event.default }">
@@ -24,19 +23,19 @@
                                 <div class="col">
                                     <p class="day-number">{{event.start_time | date : "dd"}}</p>
                                 </div>
-                                <div class="col"  ng-hide="sameDate(event.start_time, event.end_time)"> - </div>
-                                <div class="col-auto"  ng-hide="sameDate(event.start_time, event.end_time)">
+                                <div class="col" ng-hide="sameDate(event.start_time, event.end_time)"> - </div>
+                                <div class="col-auto" ng-hide="sameDate(event.start_time, event.end_time)">
                                     <p class="day">{{event.end_time | date : "EEE" | uppercase}}</p>
                                     <p class="month">{{event.end_time | date : "MMM" | uppercase}}</p>
                                 </div>
                                 <div class="col" ng-hide="sameDate(event.start_time, event.end_time)">
                                     <p class="day-number">{{event.end_time | date : "dd"}}</p>
                                 </div>
-                                
+
 
                             </div>
                         </div>
-                        <div class="col time {{getEventBackground(event.start_time)}}"  ng-hide="event.default">
+                        <div class="col time {{getEventBackground(event.start_time)}}" ng-hide="event.default">
 
                             <i class="far {{getEventBackgroundIcon(event.start_time)}}"></i>
                             {{event.start_time | date : "h:mma" | lowercase}} - {{event.end_time | date : "h:mma" | lowercase}}
@@ -71,13 +70,16 @@
             </div>
         </div>
 
-        <div class="btn btn-primary col-12" style="margin-top: 20px" ng-show="currentPeriod.limitTo < currentPeriod.data.length" ng-click="currentPeriod.limitTo = currentPeriod.limitTo + 5">
+        <div class="btn btn-primary col-12" style="margin-top: -15px" ng-show="currentPeriod.hideOnMobile" ng-click="currentPeriod.hideOnMobile = false" ng-class="{'showEventMobile' : currentPeriod.hideOnMobile}">
+            Show {{currentPeriod.name | lowercase}}
+        </div>
+
+        <div class="btn btn-primary col-12" style="margin-top: 20px" ng-show="currentPeriod.limitTo < currentPeriod.data.length" ng-class="{'hideEventMobile' : currentPeriod.hideOnMobile}" ng-click="currentPeriod.limitTo = currentPeriod.limitTo + 5">
             Show more {{currentPeriod.name | lowercase}}
         </div>
 
     </div>
-    DateTime: {{tmp}}
-
+   
 </div>
 
 

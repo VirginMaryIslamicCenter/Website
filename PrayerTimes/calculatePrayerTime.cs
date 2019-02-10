@@ -90,7 +90,7 @@ namespace PrayerTime
 
                 //prayerTimes.Midnight = DateAdd(DateInterval.Minute, (DateDiff(DateInterval.Minute, (DateTime)Today + " " + sunset_end, (DateTime)Today.AddDays(1) + " " + astro_begin) / 2), sunset_end);
 
-                prayerTimes.Midnight = astroValues.sunset_end.AddMinutes((astroValues.astro_begin - astroValues.sunset_end).TotalMinutes / 2);
+                prayerTimes.Midnight = astroValues.sunset_end.AddMinutes((astroValues.astro_begin.AddDays(1) - astroValues.sunset_end).TotalMinutes / 2);
 
             }
             getAsr = null/* TODO Change to default(_) if this is not a reference type */;
