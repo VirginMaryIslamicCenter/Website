@@ -3,6 +3,8 @@
     $scope.tmp = "";
     $scope.tmpjson = "";
 
+    $scope.tmp = new Date();
+
     var getNextSaturday = function () {
         var dt = new Date();
 
