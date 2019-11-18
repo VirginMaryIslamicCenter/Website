@@ -103,7 +103,7 @@
 
             var upcomingFilter = (eventsAll.filter(e => moment(e.start_time) >= moment()));
             if (upcomingFilter && upcomingFilter.length > 0) {
-                $scope.eventPeriods["upcoming"].data = upcomingFilter;
+                $scope.eventPeriods["upcoming"].data = upcomingFilter.reverse();
             }
             else if (!$scope.eventPeriods["live"].data || $scope.eventPeriods["live"].data.length === 0) {
              
