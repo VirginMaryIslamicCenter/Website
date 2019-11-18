@@ -15,7 +15,7 @@
     "gulp-uglify": "3.0.1",
     "del": "3.0.0",
     "@fortawesome/fontawesome-free-webfonts": "1.0.9",
-    "jquery": "3.3.1",
+    "jquery": "3.4.0",
     "jquery-ajax-unobtrusive": "3.2.4",
     "geocomplete": "1.7.0",
     "angular": "1.7.5",
