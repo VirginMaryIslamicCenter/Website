@@ -50,6 +50,21 @@
         //desc = desc.replace("In the name of Allah, the Compassionate, the Merciful", "");
         //desc = desc.replace("Assalamu Aleykum", "");
         //desc = desc.trim();
+
+        var newDesc = desc.split('\n');
+        for (var x = 0; x < newDesc.length; x++) {
+            var d = newDesc[x].toLowerCase();
+            if (d.indexOf('in the name of ') > 0) {
+                newDesc[x] = '';
+            }
+            else if (d.indexOf('assalamu aleykum')) {
+                newDesc[x] = '';
+            }
+            else if (d.length < 45 && d.indexOf(':')) {
+                newDesc[x] = '';
+            }
+        }
+
         return desc;
     };
 

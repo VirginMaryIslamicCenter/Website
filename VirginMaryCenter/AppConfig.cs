@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TimeZoneConverter;
 
 namespace VirginMaryCenter
 {
@@ -35,7 +36,7 @@ namespace VirginMaryCenter
 
         public string TimeZone { get; set; }
 
-        public DateTime Now => TimeZoneInfo.ConvertTime(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById(TimeZone));
+        public DateTime Now => TimeZoneInfo.ConvertTime(DateTime.UtcNow, TZConvert.GetTimeZoneInfo(TimeZone));
 
         public override string ToString()
         {

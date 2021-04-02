@@ -2,25 +2,31 @@
   "version": "1.0.0",
   "name": "asp.net",
   "private": true,
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
+  },
   "devDependencies": {
-    "bootstrap": "4.2.1",
+    "bootstrap": "4.4.1",
     "bootstrap-datepicker": "1.8.0",
-    "gulp": "3.9.0",
+    "gulp": "4.0.2",
     "gulp-concat": "2.6.1",
     "gulp-copy": "4.0.1",
     "gulp-cssmin": "0.2.0",
-    "gulp-if": "2.0.2",
-    "gulp-sass": "4.0.1",
-    "gulp-expect-file": "1.0.0",
-    "gulp-uglify": "3.0.1",
+    "gulp-if": "3.0.0",
+    "gulp-sass": "4.1.0",
+    "gulp-expect-file": "1.0.2",
+    "gulp-uglify": "3.0.2",
     "del": "3.0.0",
     "@fortawesome/fontawesome-free-webfonts": "1.0.9",
     "jquery": "3.3.1",
-    "jquery-ajax-unobtrusive": "3.2.4",
+    "jquery-ajax-unobtrusive": "3.2.6",
     "geocomplete": "1.7.0",
-    "angular": "1.7.5",
-    "angular-sanitize": "1.7.5",
+    "angular": "1.8.2",
+    "angular-sanitize": "1.8.2",
     "ngstorage": "0.3.11",
-    "moment": "2.24.0"
+    "moment": "2.25.3"
   }
 }

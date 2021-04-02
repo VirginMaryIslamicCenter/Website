@@ -32,7 +32,7 @@ namespace VirginMaryCenter.Controllers
             config = cfg;
         }
 
-        private const string FB_NONEXPIRING_ACCESSTOKEN = "EAALUOCj40nUBAI0mtRkTXai5zLmlPOIWrlCpIkKfNIfWgqsZCjPDdS2sFeIho86Yff05nnvrwxH74lM0buIDwBOEqZAexx7ed9zJEwgrtSNFyr3GJHRtNzFJJhduLwS7RIwBYnT9WMi99gNs4fzA4D1PrNgCwZD";
+        private const string FB_NONEXPIRING_ACCESSTOKEN = "EAALUOCj40nUBAH2h5l5s6YZBlGWEy93Mlmtnnh3s6HDeEP5Ip8nf6g1o3lDEMCmQZB0Ij8bF0dYcDVr9wLHxukrIHZBPMC9fShBs3zZBpKxLwDKNcxZC84oEBZB8WYIDyVZBlBBAz6OVKqsAlkfmmvx6QAFDuLZA4mZBDN1tKYPNUQQZDZD";
 
         [HttpGet]
         [Route("api/events")]
@@ -47,7 +47,7 @@ namespace VirginMaryCenter.Controllers
              *
              */
 
-            const string FB_GRAPHURL = "https://graph.facebook.com/v3.2";
+            const string FB_GRAPHURL = "https://graph.facebook.com/v7.0";
             const string FB_PAGE = "VirginMaryCenter";
             const string FB_FIELDS = "cover,description,place,attending_count,maybe_count,picture,name,end_time,event_times,is_canceled,is_draft,start_time,updated_time";
 
